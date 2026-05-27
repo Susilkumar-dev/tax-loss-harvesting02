@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 
 const Tooltip = ({ children, content }) => {
@@ -13,9 +11,24 @@ const Tooltip = ({ children, content }) => {
     >
       {children}
       {visible && (
-        <div className="absolute z-50 bg-gray-900 text-white text-xs rounded py-1 px-2 whitespace-nowrap bottom-full left-1/2 transform -translate-x-1/2 mb-1 shadow-lg border border-gray-700">
+        <div className="absolute z-50 px-2 py-1 mb-2 text-xs font-medium rounded shadow-md border whitespace-nowrap bottom-full left-1/2 -translate-x-1/2 transition-opacity duration-200
+          /* Light Theme Styling */
+          bg-white text-gray-800 border-gray-200
+          /* Dark Theme Styling */
+          dark:bg-gray-900 dark:text-white dark:border-gray-700 dark:shadow-none
+        ">
           {content}
-          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+          
+          
+          <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-t-4 border-x-transparent
+            /* Light Theme Arrow Color */
+            border-t-white
+            /* Dark Theme Arrow Color */
+            dark:border-t-gray-900
+          "></div>
+          
+          
+          <div className="absolute top-[100%] left-1/2 -translate-x-1/2 w-0 h-0 border-x-[5px] border-t-[5px] border-x-transparent border-t-gray-200 dark:hidden -z-10"></div>
         </div>
       )}
     </div>
